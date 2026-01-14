@@ -32,6 +32,8 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 // @ts-ignore
 import "@splidejs/react-splide/css";
 import { TbTerminal2 } from "react-icons/tb";
+import Script from "next/script";
+import { config } from "@/data/config";
 
 const CONTACT_LINKS = [
   {
@@ -98,6 +100,30 @@ function Page() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 text-zinc-200 pt-20 lg:pt-24 pb-16">
+      <Script
+        id="ld-json-about"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            name: "About " + config.author,
+            url: `${config.site}/about`,
+            description: config.description.short,
+            inLanguage: "en",
+            author: {
+              "@type": "Person",
+              name: config.author,
+              email: config.email,
+              url: config.site,
+            },
+            publisher: {
+              "@type": "Person",
+              name: config.author,
+            },
+          }),
+        }}
+      />
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-9">
         <aside className="w-full xl:max-w-1/3 xl:col-span-1 xl:justify-self-start">
           <div className="p-5 sm:p-7 lg:p-8 rounded-2xl border border-zinc-700/70 bg-gradient-to-b from-zinc-900/70 via-black/50 to-black/30 backdrop-blur-md shadow-lg">
