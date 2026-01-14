@@ -16,10 +16,13 @@ export const metadata: Metadata = {
   description: config.description.long,
   keywords: config.keywords,
   authors: [{ name: config.author }],
+  metadataBase: new URL(config.site),
+  applicationName: config.title,
   openGraph: {
     title: config.title,
     description: config.description.short,
     url: config.site,
+    siteName: config.title,
     images: [
       {
         url: config.ogImg,
@@ -44,6 +47,14 @@ export const metadata: Metadata = {
     canonical: config.site,
   },
   publisher: config.author,
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.png",
+  },
 };
 
 const inter = Inter({
@@ -70,6 +81,27 @@ export default function RootLayout({
           src={process.env.UMAMI_DOMAIN}
           data-website-id={process.env.UMAMI_SITE_ID}
         ></Script>
+        <Script
+          id="ld-json-site"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: config.title,
+              url: config.site,
+              description: config.description.long,
+              author: {
+                "@type": "Person",
+                name: config.author,
+              },
+              publisher: {
+                "@type": "Person",
+                name: config.author,
+              },
+            }),
+          }}
+        />
         <Analytics />
         <SpeedInsights />
       </head>
