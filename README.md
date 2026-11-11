@@ -2,7 +2,7 @@
 
 Welcome to my playground of pixels, keys, and scroll-triggered chaos. This portfolio mixes Spline 3D, GSAP motion, and a pile of React/Tailwind goodness to show off projects, experience, and tools—without feeling like a resume template. Dive in, poke the keyboard, spam the scroll wheel (gently), and enjoy the ride. Cookies not included, but good vibes are. If something looks broken, it might just be “experimental art.”
 
-## 🔥 Features 
+## 🔥 Features
 
 Here are the loud highlights of this playground:
 
